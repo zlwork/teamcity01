@@ -3,8 +3,8 @@
   hosts: "{{ variable_host | default('not') }}"
   tasks:
 
-  - name: Stop Nginx
-    command: sudo  /usr/sbin/service nginx stop
+#  - name: Stop Nginx
+#    command: sudo  /usr/sbin/service nginx stop
 
 
   - name: Synchronize artifact
@@ -16,7 +16,7 @@
      rsync_opts:
       - "--exclude=.*"
       - "--exclude=teamcity"
-     
-  - name: Start Nginx
-    command: sudo /usr/sbin/service nginx  start
+
+# - name: Start Nginx
+#    command: sudo /usr/sbin/service nginx  start
 
