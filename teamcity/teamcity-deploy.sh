@@ -16,7 +16,7 @@ mkdir -p .ansible-playbook
 cat <<EOT >  .ansible-playbook/inventory-file.yml
 
 [$VARIABLE_HOST]
-$IP_HOST ansible_connection=ssh ansible_ssh_user=dev ansible_port:2222
+$IP_HOST ansible_connection=ssh ansible_port=2222 ansible_ssh_user=dev 
 
 EOT
 
