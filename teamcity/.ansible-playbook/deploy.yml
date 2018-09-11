@@ -1,0 +1,22 @@
+
+- name: Deploy application
+  hosts: "{{ variable_host | default('not') }}"
+  tasks:
+
+  - name: Stop Nginx
+    command: sudo  /usr/sbin/service nginx stop
+
+
+  - name: Synchronize artifact
+    synchronize:
+     src: /{{ local_path }}/
+     dest: /{{ artifact_path }}/
+     delete: yes
+     recursive: yes
+     rsync_opts:
+      - "--exclude=.*"
+      - "--exclude=teamcity"
+     
+  - name: Start Nginx
+    command: sudo /usr/sbin/service nginx  start
+
